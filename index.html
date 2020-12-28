@@ -8,6 +8,54 @@
 </head>
 <body>
     
+    <h1>Jogo da Velha</h1>
+
+    <!--Players-->
+    <div id="buttons-container">
+        <button id="2-players">2 Jogadores</button>
+        <button id="ia-player">Contra a IA</button>
+    </div>
+    <!--Players-->
+
+    <!--Box do game-->
+    <div id="container" class="hide">
+        <div id="block-1" class="box"></div>
+        <div id="block-2" class="box"></div>
+        <div id="block-3" class="box"></div>
+        <div id="block-4" class="box"></div>
+        <div id="block-5" class="box"></div>
+        <div id="block-6" class="box"></div>
+        <div id="block-7" class="box"></div>
+        <div id="block-8" class="box"></div>
+        <div id="block-9" class="box"></div>
+    <!--Box do game-->
+
+    <!--Score-->
+        <div id="scoreboard-container">
+            <span class="score-box">
+                <span id="x-scoreboard">X</span>:
+                <span id="scoreboard-1">0</span>
+            </span>
+            <span class="score-box">
+                <span id="o-scoreboard"></span>:
+                <span id="scoreboard-2">0</span>
+            </span>
+        </div>
+    </div>
+    <!--Score-->
+
+    <!--X e O-->
+    <div class="hide">
+        <div class="x">X</div>
+        <div class="o"></div>
+    </div>
+    <!--X e O-->
+
+    <!--Msg vencedor-->
+    <div id="message" class="hide">
+        <p></p>
+    </div>
+    <!--Msg vencedor-->
 
     <script src="js/script.js"></script>
 </body>
