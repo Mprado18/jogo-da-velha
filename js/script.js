@@ -28,7 +28,7 @@ for(let i = 0; i < boxes.length; i++){
                 player2++;
             }
 
-            checkQuemVenceu();
+            checkWinner();
 
         }
 
@@ -47,7 +47,7 @@ function checkEl(player1, player2){
 }
 
 //valida quem ganhou
-function checkQuemVenceu(){
+function checkWinner(){
     let b1 = document.getElementById("block-1");
     let b2 = document.getElementById("block-2");
     let b3 = document.getElementById("block-3");
@@ -66,9 +66,9 @@ function checkQuemVenceu(){
     
 
         if(b1Child == "x" && b2Child == "x" && b3Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b1Child == "o" && b2Child == "o" && b3Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -79,9 +79,9 @@ function checkQuemVenceu(){
     
 
         if(b4Child == "x" && b5Child == "x" && b6Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b4Child == "o" && b5Child == "o" && b6Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -92,9 +92,9 @@ function checkQuemVenceu(){
     
 
         if(b7Child == "x" && b8Child == "x" && b9Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b7Child == "o" && b8Child == "o" && b9Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -106,9 +106,9 @@ function checkQuemVenceu(){
     
 
         if(b1Child == "x" && b4Child == "x" && b7Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b1Child == "o" && b4Child == "o" && b7Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -119,9 +119,9 @@ function checkQuemVenceu(){
     
 
         if(b2Child == "x" && b5Child == "x" && b8Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b2Child == "o" && b5Child == "o" && b8Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -132,9 +132,9 @@ function checkQuemVenceu(){
     
 
         if(b3Child == "x" && b6Child == "x" && b9Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b3Child == "o" && b6Child == "o" && b9Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -146,9 +146,9 @@ function checkQuemVenceu(){
     
 
         if(b1Child == "x" && b5Child == "x" && b9Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b1Child == "o" && b5Child == "o" && b9Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -159,9 +159,9 @@ function checkQuemVenceu(){
     
 
         if(b3Child == "x" && b5Child == "x" && b7Child == "x"){
-            console.log("x venceu");
+            declareWinner("x");
         } else if(b3Child == "o" && b5Child == "o" && b7Child == "o"){
-            console.log("o venceu");
+            declareWinner("o");
         }
     }
 
@@ -175,6 +175,45 @@ function checkQuemVenceu(){
     }
 
     if(counter == 9){
-        console.log("Deu velha");
+        declareWinner('deu velha');
     }
+
+}
+
+ //limpa o log, declara vencedor e atualiza o game
+ function declareWinner(winner){
+    let scoreboardX = document.querySelector("#scoreboard-1");
+    let scoreboardY = document.querySelector("#scoreboard-2");
+    let msg = '';
+
+    if(winner == "x"){
+        scoreboardX.textContent = parseInt(scoreboardX.textContent) + 1;
+        msg = "O jogador 1 venceu!";
+    } else if(winner == "o"){
+        scoreboardY.textContent = parseInt(scoreboardY.textContent) + 1;
+        msg = "O jogador 2 venceu!";
+    } else{
+        msg = "Deu velha!";
+    }
+
+    //mostrar msg
+    messageText.innerHTML = msg;
+    messageContainer.classList.remove("hide");
+
+    //esconde msg
+    setTimeout(function(){
+        messageContainer.classList.add("hide");
+    }, 3000);
+
+    //limpa as jogadas
+    player1 = 0;
+    player2 = 0;
+
+    //remover x e o
+    let boxesToRemove = document.querySelectorAll(".box div");
+
+    for(let i = 0; i < boxesToRemove.length; i++){
+        boxesToRemove[i].parentNode.removeChild(boxesToRemove[i]);
+    }
+
 }
